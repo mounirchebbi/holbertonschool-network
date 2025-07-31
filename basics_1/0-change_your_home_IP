@@ -10,7 +10,7 @@ sudo cp /etc/hosts /etc/hosts.bak
 temp_file=$(mktemp)
 
 # Remove old localhost and facebook.com lines, then add new entries
-sudo grep -v 'localhost\|facebook.com' /etc/hosts > "$temp_file"
+sudo grep -v 'localhost\|facebook.com' /etc/hosts | sudo tee "$temp_file" > /dev/null
 echo "127.0.0.2 localhost" >> "$temp_file"
 echo "8.8.8.8 facebook.com" >> "$temp_file"
 
